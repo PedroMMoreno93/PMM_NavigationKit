@@ -1,3 +1,5 @@
+<img src=".docs/assets/NavigationKitLogo.png" alt="MoviesFinder Icon" height="400" />
+
 # NavigationKit by Pedro M. Moreno
 
 `NavigationKit` is a lightweight SwiftUI SDK that provides a **decoupled navigation architecture** with a single `Coordinator` and a `RootHostView`. It solves a common problem in SwiftUI apps: navigation logic scattered across views, leading to tight coupling, brittle flows, and hard-to-test code.
