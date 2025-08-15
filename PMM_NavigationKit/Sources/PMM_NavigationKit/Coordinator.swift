@@ -13,39 +13,47 @@ public final class Coordinator: ObservableObject {
     @Published public var sheetPath: NavigationPath = .init()
     @Published public var fullCoverPath: NavigationPath = .init()
 
-    public var sheetRoute: AnyHashable?
-    public var fullCoverRoute: AnyHashable?
+    @Published public var sheetItem: ModalItem? = nil
+    @Published public var fullCoverItem: ModalItem? = nil
 
     public init() {}
 
-    public func push<R: Hashable>(_ route: R) {
+    public func show<R: Hashable>(
+        _ route: R
+    ) {
         path.append(route)
     }
-
+    
+    public func back() {
+        if !path.isEmpty {
+            path.removeLast()
+        }
+    }
+    
+    public func reset() {
+        path = NavigationPath()
+    }
+    
     public func presentSheet<R: Hashable>(_ route: R) {
-        sheetRoute = route
+        sheetItem = ModalItem(route: route)
         sheetPath = NavigationPath()
         sheetPath.append(route)
     }
 
     public func presentFullCover<R: Hashable>(_ route: R) {
-        fullCoverRoute = route
+        fullCoverItem = ModalItem(route: route)
         fullCoverPath = NavigationPath()
         fullCoverPath.append(route)
     }
 
-    public func pop() {
-        if !path.isEmpty { path.removeLast() }
-    }
-
     public func dismissSheet() {
         sheetPath = NavigationPath()
-        sheetRoute = nil
+        sheetItem = nil
     }
 
     public func dismissFullCover() {
         fullCoverPath = NavigationPath()
-        fullCoverRoute = nil
+        fullCoverItem = nil
     }
 }
 
