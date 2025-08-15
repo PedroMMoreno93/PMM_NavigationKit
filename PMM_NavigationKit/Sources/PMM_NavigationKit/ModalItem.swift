@@ -2,7 +2,7 @@
 //  ModalItem.swift
 //  PMM_NavigationKit
 //
-//  Created by Pedro M Moreno on 15/8/25.
+//  Created by Pedro M Moreno.
 //
 
 import Foundation
