@@ -30,7 +30,7 @@ public final class Coordinator: ObservableObject {
         }
     }
     
-    public func reset() {
+    public func popToRoot() {
         path = NavigationPath()
     }
     
