@@ -2,40 +2,13 @@
 //  RegisterAndRootHostViewTests.swift
 //  PMM_NavigationKit
 //
-//  Created by Pedro M Moreno on 16/8/25.
+//  Created by Pedro M Moreno.
 //
 
 import XCTest
 @testable import PMM_NavigationKit
 import SwiftUI
 import UIKit
-
-
-// MARK: - Test routes
-
-private enum TestRoute: Hashable {
-    case root
-    case detail(id: Int)
-}
-
-// MARK: - Dummy views
-
-private struct DummyRootView: View {
-    var body: some View { Text("Root").padding() }
-}
-
-private struct DummyDetailView: View {
-    let id: Int
-    var body: some View { VStack { Text("Detail"); Text("\(id)") } }
-}
-
-// MARK: - Recorder (closure-captured)
-
-@MainActor
-private final class BuildRecorder {
-    var built: [TestRoute] = []
-    func record(_ route: TestRoute) { built.append(route) }
-}
 
 final class RegisterAndRootHostViewTests: XCTestCase {
 
@@ -63,7 +36,7 @@ final class RegisterAndRootHostViewTests: XCTestCase {
 
         let root =
         DummyRootView()
-            .register(TestRoute.self) { route in
+            .register(DummyRoute.self) { route in
                 switch route {
                 case .root:
                     Text("Root Dest")
@@ -83,7 +56,7 @@ final class RegisterAndRootHostViewTests: XCTestCase {
                 .environmentObject(coordinator)
         )
         
-        coordinator.show(TestRoute.detail(id: 7))
+        coordinator.show(DummyRoute.detail(id: 7))
         spinRunLoop(0.3)
         
         XCTAssertEqual(recorder.built.last, .detail(id: 7))
@@ -98,7 +71,7 @@ final class RegisterAndRootHostViewTests: XCTestCase {
 
         let outside =
             RootHostView(root: DummyRootView())
-                .register(TestRoute.self) { route in
+                .register(DummyRoute.self) { route in
                     switch route {
                     case .root:
                         Text("Root Dest")
@@ -117,7 +90,7 @@ final class RegisterAndRootHostViewTests: XCTestCase {
 
         let (window, _) = hostInWindow(outside)
 
-        coordinator.show(TestRoute.detail(id: 42))
+        coordinator.show(DummyRoute.detail(id: 42))
         spinRunLoop(0.3)
 
         XCTAssertTrue(recorder.built.isEmpty, "register applied outside the root must be ignored")

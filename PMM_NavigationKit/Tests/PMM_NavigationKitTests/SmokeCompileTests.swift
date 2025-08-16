@@ -2,7 +2,7 @@
 //  SmokeCompileTests.swift
 //  PMM_NavigationKit
 //
-//  Created by Pedro M Moreno on 16/8/25.
+//  Created by Pedro M Moreno.
 //
 
 import XCTest
@@ -32,20 +32,4 @@ final class SmokeCompileTests: XCTestCase {
     func test_coordinator_lifecycle_compiles() {
         let _ = Coordinator()
     }
-}
-
-// MARK: - Dummy Views & Routes
-
-private enum DummyRoute: Hashable {
-    case root
-    case detail(id: Int)
-}
-
-private struct DummyRootView: View {
-    var body: some View { Text("Root") }
-}
-
-private struct DummyDetailView: View {
-    let id: Int
-    var body: some View { Text("Detail \(id)") }
 }

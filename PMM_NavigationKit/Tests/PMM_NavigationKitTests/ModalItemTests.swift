@@ -2,7 +2,7 @@
 //  ModalItemTests.swift
 //  PMM_NavigationKit
 //
-//  Created by Pedro M Moreno on 16/8/25.
+//  Created by Pedro M Moreno.
 //
 
 import XCTest
@@ -26,5 +26,3 @@ final class ModalItemTests: XCTestCase {
         XCTAssertEqual(m.route as? TestRoute, .alpha)
     }
 }
-
-private enum TestRoute: Hashable { case alpha, beta }
