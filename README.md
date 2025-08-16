@@ -261,12 +261,29 @@ PMM_NavigationKit/
 
 <a name="testing"></a>
 ## 🧪 Testing
-_Coming soon._
+## 🧪 Testing
+NavigationKit comes with an initial unit test suite that validates the core behavior of the SDK:
 
-We plan to include:
-- Coordinator unit tests (push/pop, sheet/fullCover logic)
-- UI tests for push and modal flows
-- Snapshot tests for example views
+- **CoordinatorTests** → verifies that the `Coordinator` correctly manages the navigation `path`, as well as `sheet` and `fullCover` presentations and dismissals.  
+- **RootHostViewTests** → ensures that `RootHostView` properly integrates with `NavigationStack` and stays in sync with the `Coordinator`.  
+- **RegisterModifierTests** → validates that the `.register(_:builder:)` modifier builds and navigates to the expected views when routes are pushed.  
+
+### Running the tests
+1. Open the project in Xcode.
+2. Select the `NavigationKit-Package` scheme.
+3. Press **⌘U** or use **Product > Test**.
+
+### Testing philosophy
+The main goal of the test suite is to ensure that:  
+- The **SDK behaves as a stable “navigation engine”**, independent of the features of each app.  
+- Future changes in SwiftUI or internal implementation do not break the public contract (`Coordinator`, `RootHostView`, `.register`).  
+- Tests can be easily extended to cover new scenarios without requiring heavy mocking or third-party frameworks.  
+
+### Roadmap
+Currently, the test coverage focuses on the SDK core. Future improvements include:  
+- **Integration tests for `sheet` and `fullCover`**, ensuring that modal presentation and dismissal remain consistent.  
+- **Performance and memory leak tests**, guaranteeing that navigation doesn’t retain views unexpectedly.  
+- **Snapshot tests for the Examples**, making sure that the flows included in `/PMM_NavigationKitExamples` work as “living documentation.”  
 
 <a name="tips"></a>
 ## 💡 Tips
