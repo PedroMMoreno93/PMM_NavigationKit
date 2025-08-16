@@ -9,9 +9,10 @@ import SwiftUI
 
 public extension View {
     /// Registers navigation destinations for a specific route type.
-    func register<Route: Hashable, Destination: View>(
+    func register<Route: Hashable/*, Destination: View*/>(
         _ route: Route.Type,
-        @ViewBuilder builder: @escaping (Route) -> Destination
+        @ViewBuilder builder: @escaping (Route) -> some View
+    //        @ViewBuilder builder: @escaping (Route) -> Destination
     ) -> some View {
         self.navigationDestination(for: Route.self) { route in
             builder(route)
