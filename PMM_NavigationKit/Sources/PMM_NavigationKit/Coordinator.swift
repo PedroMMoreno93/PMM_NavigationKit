@@ -37,13 +37,13 @@ public final class Coordinator: ObservableObject {
     public func presentSheet<R: Hashable>(_ route: R) {
         sheetItem = ModalItem(route: route)
         sheetPath = NavigationPath()
-        sheetPath.append(route)
+//        sheetPath.append(route)
     }
 
     public func presentFullCover<R: Hashable>(_ route: R) {
         fullCoverItem = ModalItem(route: route)
         fullCoverPath = NavigationPath()
-        fullCoverPath.append(route)
+//        fullCoverPath.append(route)
     }
 
     public func dismissSheet() {

@@ -8,14 +8,12 @@
 import Foundation
 
 public struct Item: Identifiable, Equatable, Hashable {
-    public let id: UUID
+    public let id: UUID = UUID()
     let title: String
     
     public init(
-        id: UUID,
         title: String
     ) {
-        self.id = id
         self.title = title
     }
 }
