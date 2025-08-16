@@ -74,7 +74,7 @@ Ready-to-use **example views and routes** to try the SDK quickly.
 ### Swift Package Manager (`Package.swift`)
 ```swift
 dependencies: [
-    .package(url: "https://github.com/your-username/NavigationKit.git", from: "1.0.0")
+    .package(url: "https://github.com/PedroMMoreno93/PMM_NavigationKit", from: "1.0.0")
 ],
 targets: [
     .target(
