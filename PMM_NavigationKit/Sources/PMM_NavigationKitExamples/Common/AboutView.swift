@@ -15,9 +15,6 @@ public struct AboutView: View {
     public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text("NavigationKit")
-                    .font(.largeTitle.bold())
-
                 Group {
                     Text("What is it?")
                         .font(.title3.bold())
@@ -45,6 +42,6 @@ public struct AboutView: View {
             }
             .padding()
         }
-        .navigationTitle("About")
+        .navigationTitle("NavigationKit")
     }
 }
